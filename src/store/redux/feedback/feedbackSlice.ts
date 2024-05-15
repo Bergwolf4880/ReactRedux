@@ -15,31 +15,33 @@ export const feedbackLikeSlice = createAppSlice({
     addLike: create.reducer((state: LikeStateSlice) => {
       state.likeCount = state.likeCount + 1
     }),
+    resetFeedback: create.reducer((state: LikeStateSlice) => {
+      state.likeCount = 0
+    }),
   }),
-    selectors: {
-      count : ( state: LikeStateSlice) => state.likeCount
+  selectors: {
+    count: (state: LikeStateSlice) => state.likeCount,
   },
 })
 
 export const feedbackDislikeSlice = createAppSlice({
-    name: "FEEDBACK_DISLIKE",
-    initialState: dislikeInitialState,
-    reducers: create => ({
-        addDislike: create.reducer((state: DislikeStateSlice) => {
-            state.dislikeCount = state.dislikeCount + 1
-        })
+  name: "FEEDBACK_DISLIKE",
+  initialState: dislikeInitialState,
+  reducers: create => ({
+    addDislike: create.reducer((state: DislikeStateSlice) => {
+      state.dislikeCount = state.dislikeCount + 1
     }),
-      selectors: {
-        count : ( state: DislikeStateSlice) => state.dislikeCount
-    },
-  })
-  
-export const feedbackLikeActions = feedbackLikeSlice.actions;
-export const feedbackLikeSelectors = feedbackLikeSlice.selectors;
+    resetFeedback: create.reducer((state: DislikeStateSlice) => {
+      state.dislikeCount = 0
+    }),
+  }),
+  selectors: {
+    count: (state: DislikeStateSlice) => state.dislikeCount,
+  },
+})
+
+export const feedbackLikeActions = feedbackLikeSlice.actions
+export const feedbackLikeSelectors = feedbackLikeSlice.selectors
 
 export const feedbackDislikeActions = feedbackDislikeSlice.actions
-export const feedbackDislikeSelectors = feedbackDislikeSlice.selectors;
-
-
-
-
+export const feedbackDislikeSelectors = feedbackDislikeSlice.selectors
