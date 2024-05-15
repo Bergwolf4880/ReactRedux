@@ -12,7 +12,7 @@
   "ignorePatterns": ["dist"],
   "rules": {
     "@typescript-eslint/consistent-type-imports": [
-      2,
+      "off",                                        //Здесь надо задать "off" что бы можно было убрать раздражающие комментарии про правила импорта из кода
       { "fixStyle": "separate-type-imports" }
     ],
     "@typescript-eslint/no-restricted-imports": [
