@@ -1,53 +1,48 @@
-import { CounterWrapper, ButtonControl, CounterValue } from './styles';
-import CounterButton from 'components/CounterButton/CounterButton';
-import { useState } from 'react'
-
-
+import { CounterWrapper, ButtonControl, CounterValue } from "./styles"
+import CounterButton from "components/CounterButton/CounterButton"
+import { useAppDispatch, useAppSelector } from "store/hooks"
+import {
+  counterSliceSelectors,
+  counterSliceActions,
+} from "store/redux/counter/counterSlice"
 
 function Counter() {
-
-    const [value, setValue] = useState<number>(0)
-    let roundedCount = Math.round(value * 100) / 100;
- 
-    const onOperationClick = (operator: Operator) => {
-      switch (operator) {
-        case '*':
-          setValue(prevValue => prevValue * 2);
-          break;
-        case '/':
-          setValue(prevValue => prevValue / 2);
-          break;
-        case '+':
-          setValue(prevValue => prevValue + 1);
-          break;
-        case '-':
-          setValue(prevValue => prevValue - 1);
-          break;
-        case 'c':
-          setValue(0);
-          break;
-        default:
-          console.error('Invalid operator');
-      }
+  //Вариант через Redux
+  //8.
+  const count = useAppSelector(counterSliceSelectors.count)
+  //9.Создаём функцию, которая будет делать DISPATCH
+  const dispatch = useAppDispatch()
+  //10. Создаём функции, которые будут "диспачить" определённые ЭКШЕНЫ в ответ на действия ЭКШН креаторов(в этом компоненте это кнопки)
+  const onPlus = () => {
+    //11.Диспачим экшн, который отвечает за логику увеличения каунтера на +1
+    dispatch(counterSliceActions.add())
   }
-    
-  
-    return (
-      <CounterWrapper>
-        <CounterValue>{roundedCount}</CounterValue>
-        <ButtonControl>
-          <CounterButton onButtonClick={() => onOperationClick("+")} name="+" />
-          <CounterButton onButtonClick={() => onOperationClick("-")} name="-" />
-          <CounterButton onButtonClick={() => onOperationClick("*")} name="×" />
-          <CounterButton onButtonClick={() => onOperationClick("/")} name="÷" />
-          <CounterButton
-            onButtonClick={() => onOperationClick("c")}
-            disabled = {value === 0}
-            name="C"
-          />
-        </ButtonControl>
-      </CounterWrapper>
-    )
-}
+  const onMinus = () => {
+    dispatch(counterSliceActions.minus())
+  }
+  const onDivide = () => {
+    dispatch(counterSliceActions.divide())
+  }
+  const onMultiply = () => {
+    dispatch(counterSliceActions.multiply(5))
+  }
+  const onClear = () => {
+    dispatch(counterSliceActions.clear())
+  }
 
-export default Counter;
+  return (
+    <CounterWrapper>
+      <CounterValue>{count}</CounterValue>
+      <ButtonControl>
+        <CounterButton onButtonClick={() => onPlus()} name="+" />
+        <CounterButton onButtonClick={() => onMinus()} name="-" />
+        <CounterButton onButtonClick={() => onMultiply()} name="×" />
+        <CounterButton onButtonClick={() => onDivide()} name="÷" />
+        <CounterButton onButtonClick={() => onClear()} name="C" />
+      </ButtonControl>
+    </CounterWrapper>
+  )
+};
+
+
+export default Counter

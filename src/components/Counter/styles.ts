@@ -17,7 +17,7 @@ export const CounterWrapper = styled.div`
 export const ButtonControl = styled.div`
   display: flex;
   width: auto;
-  gap: 30px;
+  gap: 20px;
 `
 
 export const CounterValue = styled.p`
