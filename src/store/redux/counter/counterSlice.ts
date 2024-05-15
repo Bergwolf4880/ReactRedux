@@ -2,14 +2,14 @@ import { createAppSlice } from "store/createAppSlice"
 import { CounterStateSlice } from "./types"
 import { PayloadAction } from "@reduxjs/toolkit"
 
-const conterInitialState = {
+const counterInitialState = {
   count: 0,
 }
 
 //1. Создаём новый слайс для каунтера
 export const counterSlice = createAppSlice({
   name: "COUNTER",
-  initialState: conterInitialState,
+  initialState: counterInitialState,
   reducers: create => ({
     add: create.reducer((state: CounterStateSlice) => {
       state.count = state.count + 1

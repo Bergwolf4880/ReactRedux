@@ -9,9 +9,9 @@ import {
 function Counter() {
   //Вариант через Redux
   //8.
-  const count = useAppSelector(counterSliceSelectors.count)
+  const count = useAppSelector(counterSliceSelectors.count);
   //9.Создаём функцию, которая будет делать DISPATCH
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   //10. Создаём функции, которые будут "диспачить" определённые ЭКШЕНЫ в ответ на действия ЭКШН креаторов(в этом компоненте это кнопки)
   const onPlus = () => {
     //11.Диспачим экшн, который отвечает за логику увеличения каунтера на +1
