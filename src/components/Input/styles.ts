@@ -24,7 +24,7 @@ export const InputComponent = styled.input`
   outline: none;
   border: none;
   border-radius: 5px;
-  background-color: rgb(255, 255, 255, 0.5);
+  background-color: #7ba6ba;
   font-size: 24px;
   color: black;
   
