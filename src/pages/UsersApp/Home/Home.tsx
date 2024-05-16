@@ -17,10 +17,14 @@ function Home() {
       age: "",
       jobTitle: "",
       },
-    onSubmit: values => {
-      dispatch(userSliceActions.addUser({...values ,id:v4()}))
-    },
-  })
+      onSubmit: values => {
+        if (!values.firstlastName || !values.age || !values.jobTitle) {
+          alert('Пожалуйста, заполните все поля');
+          return;
+        }
+        dispatch(userSliceActions.addUser({...values ,id:v4()}))
+      },
+    })
 
   return (
     <HomePageWrapper>

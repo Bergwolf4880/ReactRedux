@@ -4,7 +4,7 @@ export const InputComponentContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: 70%;
+  width: auto;
   height: fit-content;
 `;
 
@@ -18,7 +18,7 @@ export const InputComponentLabel = styled.label`
 `;
 
 export const InputComponent = styled.input`
-  width: 100%;
+  width: auto;
   height: 100%;
   padding: 20px;
   outline: none;

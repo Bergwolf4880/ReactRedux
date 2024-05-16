@@ -5,7 +5,7 @@ interface ButtonComponentProps {
 }
 
 export const ButtonComponent = styled.button<ButtonComponentProps>`
-  width: 100%;
+  width: auto;
   height: 100%;
   padding: 10px;
   font-size: 24px;
@@ -15,7 +15,7 @@ export const ButtonComponent = styled.button<ButtonComponentProps>`
   border: none;
   outline: none;
   background: ${({ disabled }) =>
-        disabled ? '#DBDED5' : 'rgb(255, 255, 255, 0.6)'};
+        disabled ? '#DBDED5' : '#7ba6ba'};
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
   justify-content: center;

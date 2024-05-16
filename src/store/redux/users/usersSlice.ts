@@ -12,6 +12,9 @@ export const userSlice = createAppSlice({
     reducers: create => ({
         addUser: create.reducer((state: UsersSliceState, action: PayloadAction<UserData>) => {
             state.users = [...state.users, action.payload]
+        }),
+      deleteUserData: create.reducer((state: UsersSliceState) => {
+        state.users = []
       })
     }),
     selectors: {
