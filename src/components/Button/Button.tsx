@@ -1,7 +1,7 @@
 import { ButtonComponent } from './styles';
 import { ButtonProps } from './types';
 
-function CounterButton({
+function Button({
   name,
   type = 'button',
   disabled = false,
@@ -16,4 +16,4 @@ function CounterButton({
   );
 }
 
-export default CounterButton;
+export default Button;

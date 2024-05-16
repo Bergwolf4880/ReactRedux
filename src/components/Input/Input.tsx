@@ -15,7 +15,10 @@ function Input({
   value,
   checked,
   error
- }: InputProps) {
+}: InputProps) {
+  
+  console.log('inputRender')
+  
   return (
     <InputComponentContainer>
       {/* <InputComponentLabel>{label}</InputComponentLabel> */}
