@@ -1,11 +1,12 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { counterSlice } from './redux/counter/counterSlice'
-import { feedbackDislikeSlice, feedbackLikeSlice } from './redux/feedback/feedbackSlice'
+import { feedbackSlice } from './redux/feedback/feedbackSlice'
+import { userSlice } from './redux/users/usersSlice'
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices(counterSlice, feedbackLikeSlice, feedbackDislikeSlice )
+const rootReducer = combineSlices(counterSlice, feedbackSlice, userSlice )
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>
 

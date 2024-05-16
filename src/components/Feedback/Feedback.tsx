@@ -1,11 +1,9 @@
 import { useAppDispatch, useAppSelector } from "store/hooks"
 
 import {
-  feedbackDislikeActions,
-  feedbackDislikeSelectors,
-  feedbackLikeActions,
-  feedbackLikeSelectors,
-} from "store/redux/feedback/feedbackSlice"
+  feedbackSliceActions,
+  feedbackSliceSelectors
+  } from "store/redux/feedback/feedbackSlice"
 
 import {
   DislikeIcon,
@@ -18,20 +16,24 @@ import {
 } from "./styles"
 
 function Feedback() {
-  const likeCount = useAppSelector(feedbackLikeSelectors.count)
-  const dislikeCount = useAppSelector(feedbackDislikeSelectors.count)
 
-  const dispatch = useAppDispatch()
+  const likeCount = useAppSelector(feedbackSliceSelectors.countLike);
+  const dislikeCount = useAppSelector(feedbackSliceSelectors.countDislike);
+
+  const dispatch = useAppDispatch();
+  
+
+
 
   const onLike = () => {
-    dispatch(feedbackLikeActions.addLike())
+    dispatch(feedbackSliceActions.addLike())
   }
   const onDislike = () => {
-    dispatch(feedbackDislikeActions.addDislike())
+    dispatch(feedbackSliceActions.addDislike())
   }
   const onReset = () => {
-    dispatch(feedbackLikeActions.resetFeedback())
-    dispatch(feedbackDislikeActions.resetFeedback())
+    dispatch(feedbackSliceActions.resetFeedback())
+    dispatch(feedbackSliceActions.resetFeedback())
   }
 
   return (

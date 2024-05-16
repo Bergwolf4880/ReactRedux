@@ -5,7 +5,7 @@ export const FeedbackContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 110%;
+  width: auto;
   height: 100%;
   padding: 15px;
   gap: 10px;

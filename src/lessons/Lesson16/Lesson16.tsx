@@ -13,9 +13,9 @@ function Lesson16() {
 
   return (
     <Counter
-      countValue={value}
-      onMinusClick={onMinusClick}
-      onPlusClick={onPlusClick}
+      // countValue={value}
+      // onMinusClick={onMinusClick}
+      // onPlusClick={onPlusClick}
     />
   )
 }

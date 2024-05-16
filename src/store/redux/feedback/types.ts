@@ -4,3 +4,8 @@ export interface LikeStateSlice {
 export interface DislikeStateSlice {
   dislikeCount: number
 }
+
+export interface FeedbackStateSlice {
+  likeCount: number,
+  dislikeCount: number,
+}

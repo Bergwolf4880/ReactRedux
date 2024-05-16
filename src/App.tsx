@@ -1,12 +1,21 @@
-import Homework17 from "homeworks/Homework17/Homework17"
-import Lesson16 from "lessons/Lesson16/Lesson16"
-import Homework16 from "homeworks/Homework16/Homework16"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+import Layout from 'pages/UsersApp/Layout/Layout'
+import Home from "pages/UsersApp/Home/Home"
+import Users from "pages/UsersApp/Users/Users"
 
 const App = () => {
   return (
-    // <Lesson16/>
-    // <Homework16 />
-    <Homework17 />
+    <BrowserRouter>
+      {/* Lesson18 - Layout и его вложенные рауты */}
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="*" element="Page Not Found" />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   )
 }
 

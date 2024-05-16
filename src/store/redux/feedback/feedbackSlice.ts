@@ -1,47 +1,29 @@
 import { createAppSlice } from "store/createAppSlice"
-import { DislikeStateSlice, LikeStateSlice } from "./types"
+import { FeedbackStateSlice } from "./types"
 
-const likeInitialState = {
+
+const feedbackInitialState: FeedbackStateSlice = {
   likeCount: 0,
-}
-const dislikeInitialState = {
   dislikeCount: 0,
 }
 
-export const feedbackLikeSlice = createAppSlice({
-  name: "FEEDBACK_LIKE",
-  initialState: likeInitialState,
+export const feedbackSlice = createAppSlice({
+  name: "FEEDBACK",
+  initialState: feedbackInitialState,
   reducers: create => ({
-    addLike: create.reducer((state: LikeStateSlice) => {
-      state.likeCount = state.likeCount + 1
-    }),
-    resetFeedback: create.reducer((state: LikeStateSlice) => {
-      state.likeCount = 0
-    }),
-  }),
-  selectors: {
-    count: (state: LikeStateSlice) => state.likeCount,
-  },
-})
-
-export const feedbackDislikeSlice = createAppSlice({
-  name: "FEEDBACK_DISLIKE",
-  initialState: dislikeInitialState,
-  reducers: create => ({
-    addDislike: create.reducer((state: DislikeStateSlice) => {
+    addDislike: create.reducer((state: FeedbackStateSlice) => {
       state.dislikeCount = state.dislikeCount + 1
     }),
-    resetFeedback: create.reducer((state: DislikeStateSlice) => {
-      state.dislikeCount = 0
+    addLike: create.reducer((state: FeedbackStateSlice) => {
+      state.likeCount = state.likeCount + 100000
     }),
+    resetFeedback: create.reducer(() => feedbackInitialState),    
   }),
   selectors: {
-    count: (state: DislikeStateSlice) => state.dislikeCount,
-  },
+    countLike: (state: FeedbackStateSlice) => state.likeCount,
+    countDislike: (state: FeedbackStateSlice) => state.dislikeCount
+  },  
 })
 
-export const feedbackLikeActions = feedbackLikeSlice.actions
-export const feedbackLikeSelectors = feedbackLikeSlice.selectors
-
-export const feedbackDislikeActions = feedbackDislikeSlice.actions
-export const feedbackDislikeSelectors = feedbackDislikeSlice.selectors
+export const feedbackSliceActions = feedbackSlice.actions
+export const feedbackSliceSelectors = feedbackSlice.selectors
