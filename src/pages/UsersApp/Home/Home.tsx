@@ -17,12 +17,13 @@ function Home() {
       age: "",
       jobTitle: "",
       },
-      onSubmit: values => {
+      onSubmit:( values, helpers ) => {
         if (!values.firstlastName || !values.age || !values.jobTitle) {
           alert('Пожалуйста, заполните все поля');
           return;
         }
-        dispatch(userSliceActions.addUser({...values ,id:v4()}))
+        dispatch(userSliceActions.addUser({ ...values, id: v4() }))
+        helpers.resetForm()
       },
     })
 
