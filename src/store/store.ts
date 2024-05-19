@@ -4,11 +4,12 @@ import { counterSlice } from './redux/counter/counterSlice'
 import { feedbackSlice } from './redux/feedback/feedbackSlice'
 import { userSlice } from './redux/users/usersSlice'
 import { todoListSlice } from './redux/todoList/todoListSclice'
+import { randomJokeSlice } from './redux/randomJokes/randomJokesSlice'
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices(counterSlice, feedbackSlice, userSlice, todoListSlice )
-// Infer the `RootState` type from the root reducer
+const rootReducer = combineSlices(counterSlice, feedbackSlice, userSlice, todoListSlice, randomJokeSlice )
+// Infer the `RootState` type from the root reducerv
 export type RootState = ReturnType<typeof rootReducer>
 
 // The store setup is wrapped in `makeStore` to allow reuse
