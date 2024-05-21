@@ -1,6 +1,5 @@
 import { createAppSlice } from "store/createAppSlice"
 import { RandomJokesSliceState } from './types'
-import { error } from 'console'
 
 const randomInitialState : RandomJokesSliceState = {
   data: [],
