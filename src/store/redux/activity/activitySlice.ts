@@ -1,10 +1,11 @@
 import { createAppSlice } from "store/createAppSlice"
-import { RandomActivitySliceState } from "./types"
+import { RandomActivity, RandomActivitySliceState } from "./types"
 import { PayloadAction } from "@reduxjs/toolkit"
+import { v4 } from 'uuid'
 
 const activityInitialState: RandomActivitySliceState = {
   activities: [],
-  status: "default",
+  isLoading: false,
   error: undefined,
 }
 
@@ -25,31 +26,29 @@ export const randomActivitySlice = createAppSlice({
       },
       {
         pending: (state: RandomActivitySliceState) => {
-          state.status = "loading"
+          state.isLoading = true;
           state.error = undefined
         },
         fulfilled: (state: RandomActivitySliceState, action: any) => {
-          state.status = "success"
+          state.isLoading = false
           state.activities = [
-            
+            ...state.activities,
             {
-              key: action.payload.key,
+              id: v4(),
               activity: action.payload.activity,
-            }, ...state.activities
+            } 
           ]
         },
         rejected: (state: RandomActivitySliceState, action: any) => {
-          state.status = "error"
+          state.isLoading = false
             state.error = action.payload
-            alert("Network Error")
         },
       },
     ),
     deleteAll: create.reducer(() => activityInitialState),
     deleteActivity: create.reducer(
       (state: RandomActivitySliceState, action: PayloadAction<string>) => {
-        state.activities = state.activities.filter((activity) => activity.key !== action.payload)
-        console.log('action.payload',action.payload)
+        state.activities = state.activities.filter((activity : RandomActivity) => activity.id !== action.payload)
       })
   }),
   selectors: {

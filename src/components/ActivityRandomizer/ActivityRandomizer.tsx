@@ -12,25 +12,32 @@ import {
 import CounterButton from "components/CounterButton/CounterButton"
 import Button from "components/Button/Button"
 import Spinner from 'components/Spinner/Spinner'
+import { useEffect } from 'react'
 
 export const ActivityRandomizer = () => {
   const dispatch = useAppDispatch()
 
-  const { activities, status, error } = useAppSelector(
+  const { activities, isLoading, error } = useAppSelector(
     randomActivitySelectors.activity,
   )
-console.log('activities',activities)
   const getRandomActivity = () => {
     dispatch(randomActivityActions.getActivity())
   }
 
-  const activitiesMapped = activities.map(act => {
+  useEffect(() => {
+    if (error) {
+     alert('Missing network connection') 
+    }    
+  },[error])
+
+
+  const activitiesMapped = activities.map((act, index) => {
     const removeActivity = () => {
-      dispatch(randomActivityActions.deleteActivity(act.key))
+      dispatch(randomActivityActions.deleteActivity(act.id))
     }
     return (
-      <ActivityContainer key={act.key}>
-        <ActivityText>{act.activity}</ActivityText>
+      <ActivityContainer key={act.id}>
+        <ActivityText>{`${index+1}. ${act.activity}`}</ActivityText>
         <CounterButton name="×" onButtonClick={removeActivity}></CounterButton>
       </ActivityContainer>
     )
@@ -46,10 +53,10 @@ console.log('activities',activities)
       <Button
         name="Activity Randomizer"
         onButtonClick={getRandomActivity}
-        disabled = {status === 'loading'}
+        disabled = {isLoading}
       ></Button>
       <ActivityWrapper>{activitiesMapped}</ActivityWrapper>
-      {status === 'loading' && <Spinner />}
+      {isLoading && <Spinner />}
       {activities.length !== 0 && <Button name="Delete all" onButtonClick={deleteAllEntries} />}
     </ActtivityRandomizerComponent>
   )

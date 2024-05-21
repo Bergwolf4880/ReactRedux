@@ -1,10 +1,10 @@
 export interface RandomActivity{
-    key: string,
+    id: string,
     activity: string,
     }
 
 export interface RandomActivitySliceState{
     activities: RandomActivity[],
-    status: 'default' | 'loading' | 'success' | 'error'
+    isLoading: boolean
     error: any
 }
