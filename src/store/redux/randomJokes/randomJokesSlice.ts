@@ -19,7 +19,7 @@ export const randomJokeSlice = createAppSlice({
         const result = await response.json()
         console.log("result", result)
         if (!response.ok) {
-          thunkAPI.rejectWithValue(result)
+         return thunkAPI.rejectWithValue(result)
         } else {
           return result
         }

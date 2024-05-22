@@ -14,12 +14,12 @@ export const randomActivitySlice = createAppSlice({
   initialState: activityInitialState,
   reducers: create => ({
     getActivity: create.asyncThunk(
-      async (arg, thunkApi) => {
+      async (arg, {rejectWithValue}) => {
         const response = await fetch("https://www.boredapi.com/api/activity")
         const result = await response.json()
 
         if (!response.ok) {
-          thunkApi.rejectWithValue(result)
+          return rejectWithValue(result)
         } else {
           return result
         }

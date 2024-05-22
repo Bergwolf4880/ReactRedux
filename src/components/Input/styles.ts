@@ -3,27 +3,25 @@ import styled from '@emotion/styled';
 export const InputComponentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  width: 70%;
+  width: 100%;
   height: fit-content;
 `;
 
 export const InputComponentLabel = styled.label`
-  font-size: 24px;
-  
+  font-size: 24px;  
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 600;
-  height: 100%;
+  height: auto;
   color: #243f2b;
 `;
 
 export const InputComponent = styled.input`
-  width: 100%;
-  height: 100%;
+  width: 450px;
+  height: auto;
   padding: 20px;
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 40px;
   background-color: #7ba6ba;
   font-size: 24px;
   color: black;

@@ -1,29 +1,28 @@
 import styled from '@emotion/styled';
 
 interface ButtonComponentProps {
-  disabled: boolean;
+  addToFavourites: boolean;
 }
 
 export const ButtonComponent = styled.button<ButtonComponentProps>`
-  width: 50px;
-  height: 50px;
-  padding: 10px;
+  width: 30px;
+  height: 30px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  background: ${({ disabled }) =>
-    disabled ? 'transparent' : 'rgb(90, 51, 161, 0.4)'};
+  font-size: 16px;
+  font-weight: 900;
+  color: ${({ addToFavourites }) =>
+        addToFavourites ? 'green' : 'red'};
   border: none;
-  border-radius: 100px;
-  color: #260c31;
-  cursor: pointer;  
+  border-radius: 30px;
+    cursor: pointer;  
   justify-content: center;
+  align-items: center;
   transition: ease-out 0.2s;
-  
+  opacity: 0.6;
   &:hover {
     opacity: 1;
     transition: ease-in 0.2s;
-    box-shadow: 0 0 10px #ac41ff;
+    
   }
 `;
 

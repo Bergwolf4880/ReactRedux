@@ -4,13 +4,13 @@ import { ButtonProps } from './types';
 function CounterButton({
   name,
   type = 'button',
-  disabled = false,
+  addToFavourites = false,
   onButtonClick,
 }: ButtonProps) {
   
   return (
-       <ButtonComponent type={type} disabled={disabled} onClick={onButtonClick}>
-        {name}
+       <ButtonComponent type={type} addToFavourites={addToFavourites} onClick={onButtonClick}>
+       {name}
       </ButtonComponent>
 
   );

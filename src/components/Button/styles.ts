@@ -7,11 +7,12 @@ interface ButtonComponentProps {
 export const ButtonComponent = styled.button<ButtonComponentProps>`
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 20px;
+  margin-bottom: 22px;;
   font-size: 24px;
   font-weight: 700;
   backdrop-filter: blur(10px);
-  border-radius: 5px;
+  border-radius: 40px;
   border: none;
   outline: none;
   background: ${({ disabled }) =>
